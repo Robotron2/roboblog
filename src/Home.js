@@ -1,17 +1,17 @@
+import { useState } from "react";
+
 const Home = () => {
-	const handleClick = (person) => {
-		console.log(`Hello ${person}`);
+	const [name, setName] = useState("Theo");
+
+	const handleClick = () => {
+		setName("Philus");
 	};
 
 	return (
 		<div className="home">
 			<h2>Homepage</h2>
-			<button
-				onClick={() => {
-					handleClick("Theo");
-				}}>
-				Click Me
-			</button>
+			<p>{name}</p>
+			<button onClick={handleClick}>Click Me</button>
 		</div>
 	);
 };
