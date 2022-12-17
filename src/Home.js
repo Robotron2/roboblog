@@ -9,15 +9,26 @@ const Home = () => {
 			title: "Introduction to Robotics Programming",
 			body: "Robotic programming is best seen as a way you give set of commands to a machine so that you can sit back and watch the machine do all the dirty work.",
 			author: "Professor Theophilus",
-			id: 3,
-		},
+			id: 3
+		}
 	]);
-	const handleClick = () => {};
+
+	const handleDelete = (id) => {
+		const newBlogs = blogs.filter((blog) => blog.id !== id);
+		setBlogs(newBlogs);
+	};
 
 	return (
 		<div className="home">
+			<h1>Hello</h1>
 			<BlogList blogsProps={blogs} title="All Blogs" />
-			<button onClick={handleClick}>Click Me</button>
+			<BlogList
+				blogsProps={blogs.filter((blog) => {
+					return blog.author === "Professor Theophilus";
+				})}
+				title="Prof Theo's Blogs"
+				handleDeleteProps={handleDelete}
+			/>
 		</div>
 	);
 };
