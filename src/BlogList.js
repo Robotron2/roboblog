@@ -2,7 +2,6 @@ const BlogList = ({ blogsProps, title, handleDeleteProp }) => {
 	return (
 		<div className="blog-list">
 			<h1>{title}</h1>
-
 			{blogsProps.map((blog) => {
 				return (
 					<div className="blog-preview">
@@ -18,3 +17,24 @@ const BlogList = ({ blogsProps, title, handleDeleteProp }) => {
 }
 
 export default BlogList
+
+// const BlogList = ({ blogsProps, title, handleDeleteProp, handleGreetingProp }) => {
+// 	return (
+// 		<div className="blog-list">
+// 			<h1>{title}</h1>
+// 			<div>
+// 				<button onClick={handleGreetingProp}>Greet</button>
+// 			</div>
+// 			{blogsProps.map((blog) => {
+// 				return (
+// 					<div className="blog-preview">
+// 						{blog.body}
+// 						<div>
+// 							<button onClick={() => handleDeleteProp(blog.id)}>Delete blog</button>
+// 						</div>
+// 					</div>
+// 				)
+// 			})}
+// 		</div>
+// 	)
+// }
