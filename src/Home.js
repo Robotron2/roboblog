@@ -3,6 +3,7 @@ import BlogList from "./BlogList"
 
 const Home = () => {
 	const [blogs, setBlogs] = useState(null)
+	const [isLoading, setisLoading] = useState(true)
 
 	// const [name, setName] = useState("Theo")
 
@@ -11,18 +12,19 @@ const Home = () => {
 	// }, [name])
 
 	useEffect(() => {
-		fetch("http://localhost:8000/blogs")
-			.then((res) => res.json())
-			.then((data) => {
-				console.log(data)
-				console.log("This is the data")
-				setBlogs(data)
-			})
+		setTimeout(() => {
+			fetch("http://localhost:8000/blogs")
+				.then((res) => res.json())
+				.then((data) => {
+					setBlogs(data)
+					setisLoading(false)
+				})
+		}, 1000)
 	}, [])
 
 	return (
 		<div className="home">
-			{/* <p>{name}</p> */}
+			{isLoading && <div>Loading...</div>}
 			{blogs && <BlogList blogsProps={blogs} title="All Blogs" />}
 			{/* <button onClick={() => setName("Theophlus")}>Change Name</button> */}
 		</div>
