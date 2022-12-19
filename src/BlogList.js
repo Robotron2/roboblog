@@ -5,10 +5,7 @@ const BlogList = ({ blogsProps, title, handleDeleteProp }) => {
 			{blogsProps.map((blog) => {
 				return (
 					<div className="blog-preview">
-						{blog.body}
-						<div>
-							<button onClick={() => handleDeleteProp(blog.id)}>Delete blog</button>
-						</div>
+						<h2>{blog.title}</h2>
 					</div>
 				)
 			})}
