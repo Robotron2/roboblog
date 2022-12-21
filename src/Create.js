@@ -3,14 +3,22 @@ import { useState } from "react"
 const Create = () => {
 	const [title, setTitle] = useState("")
 	const [body, setBody] = useState("")
-	const [author, setAuthor] = useState("")
+	const [author, setAuthor] = useState("Theo")
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		const blog = { title, body, author }
-		setTitle("")
-		setBody("")
-		setAuthor("")
+
+		fetch("http://localhost:8000/blogs", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(blog)
+		}).then(() => {
+			console.log("New blog added")
+			setTitle("")
+			setBody("")
+			setAuthor("")
+		})
 	}
 
 	return (
@@ -38,15 +46,13 @@ const Create = () => {
 					value={author}
 					onChange={(e) => {
 						setAuthor(e.target.value)
-					}}>
+					}}
+					required>
 					<option value="Theophilus">Theophilus</option>
 					<option value="Robotron">Robotron</option>
 				</select>
 				<button>Add Blog</button>
 			</form>
-			<div>{title}</div>
-			<div>{body}</div>
-			<div>{author}</div>
 		</div>
 	)
 }
