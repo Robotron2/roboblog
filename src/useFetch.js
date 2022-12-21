@@ -23,7 +23,7 @@ const useFetch = (url) => {
 				.catch((err) => {
 					// console.log(err)
 					if (err.name === "AbortError") {
-						console.log("Fetch aborted")
+						// console.log("Fetch aborted")
 					} else {
 						setError(err.message)
 						setisLoading(false)
