@@ -4,10 +4,13 @@ const Create = () => {
 	const [title, setTitle] = useState("")
 	const [body, setBody] = useState("")
 	const [author, setAuthor] = useState("Theo")
+	const [isAdding, setIsAdding] = useState(false)
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		const blog = { title, body, author }
+
+		setIsAdding(true)
 
 		fetch("http://localhost:8000/blogs", {
 			method: "POST",
@@ -15,6 +18,7 @@ const Create = () => {
 			body: JSON.stringify(blog)
 		}).then(() => {
 			console.log("New blog added")
+			setIsAdding(false)
 			setTitle("")
 			setBody("")
 			setAuthor("")
@@ -51,7 +55,8 @@ const Create = () => {
 					<option value="Theophilus">Theophilus</option>
 					<option value="Robotron">Robotron</option>
 				</select>
-				<button>Add Blog</button>
+				{!isAdding && <button>Add Blog</button>}
+				{isAdding && <button>Please wait...</button>}
 			</form>
 		</div>
 	)
