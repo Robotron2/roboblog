@@ -3,6 +3,7 @@ import { useState } from "react"
 const Create = () => {
 	const [title, setTitle] = useState("")
 	const [body, setBody] = useState("")
+	const [author, setAuthor] = useState("Theophilus")
 
 	return (
 		<div className="create">
@@ -25,7 +26,11 @@ const Create = () => {
 						setBody(e.target.value)
 					}}></textarea>
 				<label>Blog author:</label>
-				<select>
+				<select
+					value={author}
+					onChange={(e) => {
+						setAuthor(e.target.value)
+					}}>
 					<option value="Theophilus">Theophilus</option>
 					<option value="Robotron">Robotron</option>
 				</select>
@@ -33,6 +38,7 @@ const Create = () => {
 			</form>
 			<div>{title}</div>
 			<div>{body}</div>
+			<div>{author}</div>
 		</div>
 	)
 }
