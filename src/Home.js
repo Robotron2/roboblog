@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import BlogList from "./BlogList"
 import useFetch from "./useFetch"
 
@@ -9,6 +10,15 @@ const Home = () => {
 		<div className="home">
 			{/* {error && <div>{error}</div>} */}
 			{isLoading && <div>Loading...</div>}
+			{!allBlogs && (
+				<center>
+					<div className="links">
+						<Link to={"/create"} style={{ color: "white", backgroundColor: "#f1356d", borderRadius: "8px", padding: "10px", textDecoration: "none" }}>
+							Oops there are no blogs. Click to add some
+						</Link>
+					</div>
+				</center>
+			)}
 			{allBlogs && <BlogList blogsProps={allBlogs} title="All Blogs" />}
 		</div>
 	)
