@@ -35,8 +35,6 @@ const useFetch = (db) => {
 		setisLoading(false)
 	}, [db])
 
-	console.log(data)
-
 	return { data, isLoading }
 }
 

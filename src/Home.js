@@ -3,7 +3,7 @@ import useFetch from "./useFetch"
 
 const Home = () => {
 	const { data: allBlogs, isLoading } = useFetch("AllBlogs")
-	console.log(allBlogs)
+	// console.log(allBlogs)
 
 	return (
 		<div className="home">
