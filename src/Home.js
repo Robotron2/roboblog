@@ -15,7 +15,6 @@ const Home = () => {
 			{error && <div>{error}</div>}
 			{isLoading && <div>Loading...</div>}
 			{blogs && <BlogList blogsProps={blogs} title="All Blogs" />}
-			{/* <button onClick={() => setName("Theophlus")}>Change Name</button> */}
 		</div>
 	)
 }

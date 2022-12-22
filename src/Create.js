@@ -8,23 +8,43 @@ const Create = () => {
 	const [isAdding, setIsAdding] = useState(false)
 	const history = useHistory()
 
+	// const handleSubmit = (e) => {
+	// 	e.preventDefault()
+	// 	const blog = { title, body, author }
+
+	// 	setIsAdding(true)
+
+	// 	fetch("http://localhost:8000/blogs", {
+	// 		method: "POST",
+	// 		headers: { "Content-Type": "application/json" },
+	// 		body: JSON.stringify(blog)
+	// 	}).then(() => {
+	// 		console.log("New blog added")
+	// 		setIsAdding(false)
+	// 		setTitle("")
+	// 		setBody("")
+	// 		history.push("/")
+	// 	})
+	// }
+
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		const blog = { title, body, author }
+		let jsonBlogsArray = []
+		const newBlogObject = { title, body, author }
+		const check = localStorage.getItem("AllBlogs")
+		console.log(check)
 
-		setIsAdding(true)
-
-		fetch("http://localhost:8000/blogs", {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify(blog)
-		}).then(() => {
-			console.log("New blog added")
-			setIsAdding(false)
-			setTitle("")
-			setBody("")
-			history.push("/")
-		})
+		setTimeout(() => setIsAdding(true), 500)
+		if (check === null) {
+			jsonBlogsArray.push(newBlogObject)
+			localStorage.setItem("AllBlogs", JSON.stringify(jsonBlogsArray))
+		} else {
+			jsonBlogsArray = JSON.parse(localStorage.getItem("AllBlogs"))
+			jsonBlogsArray.push(newBlogObject)
+			localStorage.setItem("AllBlogs", JSON.stringify(jsonBlogsArray))
+		}
+		setIsAdding(false)
+		history.push("/")
 	}
 
 	return (

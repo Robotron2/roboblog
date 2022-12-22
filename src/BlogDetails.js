@@ -2,10 +2,10 @@ import { useHistory, useParams } from "react-router-dom"
 import useFetch from "./useFetch"
 
 const BlogDetails = () => {
-	const { id } = useParams()
+	// const { id } = useParams()
 	const history = useHistory()
 
-	const { data: blog, error, isLoading } = useFetch(`http://localhost:8000/blogs/${id}`)
+	const { data: blog, isLoading } = useFetch(`AllBlogs`)
 
 	const handleDelete = () => {
 		fetch(`http://localhost:8000/blogs/${blog.id}`, {
@@ -18,7 +18,7 @@ const BlogDetails = () => {
 	return (
 		<div className="blog-details">
 			{isLoading && <div>Loading....</div>}
-			{error && <div>{error}</div>}
+			{/* {error && <div>{error}</div>} */}
 			{blog && (
 				<article>
 					<h2>{blog.title}</h2>
