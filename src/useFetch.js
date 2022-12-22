@@ -30,10 +30,12 @@ const useFetch = (db) => {
 		// 		})
 		// }, 1000)
 		// return () => abortCtrl.abort()
-		const dbBlog = localStorage.getItem("AllBlogs")
+		const dbBlog = JSON.parse(localStorage.getItem("AllBlogs"))
 		setData(dbBlog)
 		setisLoading(false)
 	}, [db])
+
+	console.log(data)
 
 	return { data, isLoading }
 }

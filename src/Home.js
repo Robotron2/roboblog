@@ -2,19 +2,14 @@ import BlogList from "./BlogList"
 import useFetch from "./useFetch"
 
 const Home = () => {
-	const { data: blogs, isLoading, error } = useFetch("http://localhost:8000/blogs")
-
-	// const [name, setName] = useState("Theo")
-
-	// useEffect(() => {
-	// 	console.log("useEffect ran")
-	// }, [name])
+	const { data: allBlogs, isLoading } = useFetch("AllBlogs")
+	console.log(allBlogs)
 
 	return (
 		<div className="home">
-			{error && <div>{error}</div>}
+			{/* {error && <div>{error}</div>} */}
 			{isLoading && <div>Loading...</div>}
-			{blogs && <BlogList blogsProps={blogs} title="All Blogs" />}
+			{allBlogs && <BlogList blogsProps={allBlogs} title="All Blogs" />}
 		</div>
 	)
 }
