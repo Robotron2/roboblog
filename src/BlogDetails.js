@@ -1,34 +1,39 @@
-// import { useHistory } from "react-router-dom"
-import useFetch from "./useFetch"
+import { useParams } from "react-router-dom"
+
 
 const BlogDetails = () => {
-	// const { id } = useParams()
-	// const history = useHistory()
+    const dbBlog = JSON.parse(localStorage.getItem("AllBlogs")) // [{}, {}, ...]
+	const idObject = useParams()
+	const urlId = idObject.id
+	
+    
+    const filterer =(blogItem)=>{
+        return blogItem.id == urlId
+    }
+        
+	const filteredArray = dbBlog.filter(filterer)
+    // console.log(typeof(filteredArray))
+    // console.log(filteredArray[0])
+    
+    
+    
+    return(
+        filteredArray.map((blog, index)=>{
+        	return (
+	<div className="blog-details" key={index+1}>
+		{blog && (
+			<article>
+				<h2>{blog.title}</h2>
+				<p>{blog.author}</p>
+				<div>{blog.body}</div>
+			</article>
+		)}
+	</div>
+    
+    )})
+    )
+    
 
-	const { data: blogs, isLoading } = useFetch(`AllBlogs`)
-
-	// const handleDelete = () => {
-	// 	fetch(`http://localhost:8000/blogs/${blog.id}`, {
-	// 		method: "DELETE"
-	// 	}).then(() => {
-	// 		history.push("/")
-	// 	})
-	// }
-
-	return (
-		<div className="blog-details">
-			{isLoading && <div>Loading....</div>}
-			{/* {error && <div>{error}</div>} */}
-			{blogs && (
-				<article>
-					<h2>{blogs.title}</h2>
-					<p>{blogs.author}</p>
-					<div>{blogs.body}</div>
-					{/* <button onClick={handleDelete}>Delete Blog</button> */}
-				</article>
-			)}
-		</div>
-	)
 }
 
 export default BlogDetails

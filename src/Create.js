@@ -30,11 +30,16 @@ const Create = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		let jsonBlogsArray = []
-		const newBlogObject = { title, body, author }
+		const newBlogObject = { title, body, author, id: Math.round(Math.random() * 2048) }
 		const check = localStorage.getItem("AllBlogs")
-		console.log(check)
+		// console.log(check)
 
-		setTimeout(() => setIsAdding(true), 500)
+		setTimeout(() => setIsAdding(true), 100)
+		setTimeout(() => {
+			setIsAdding(false)
+			history.push("/")
+		}, 1000)
+
 		if (check === null) {
 			jsonBlogsArray.push(newBlogObject)
 			localStorage.setItem("AllBlogs", JSON.stringify(jsonBlogsArray))
@@ -43,8 +48,6 @@ const Create = () => {
 			jsonBlogsArray.push(newBlogObject)
 			localStorage.setItem("AllBlogs", JSON.stringify(jsonBlogsArray))
 		}
-		setIsAdding(false)
-		history.push("/")
 	}
 
 	return (
