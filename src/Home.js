@@ -1,16 +1,25 @@
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import BlogList from "./BlogList"
-import useFetch from "./useFetch"
 
 const Home = () => {
-	const { data: allBlogs, isLoading } = useFetch("AllBlogs")
-	// console.log(allBlogs)
+	const [localBlogs, setLocalBlogs] = useState()
+
+	const getBlogs = () => {
+		const dbBlog = JSON.parse(localStorage.getItem("AllBlogs"))
+		if (!dbBlog === []) {
+			setLocalBlogs(dbBlog)
+			console.log(localBlogs)
+		} else {
+			setLocalBlogs([])
+		}
+	}
+
+	useEffect(getBlogs, [])
 
 	return (
 		<div className="home">
-			{/* {error && <div>{error}</div>} */}
-			{isLoading && <div>Loading...</div>}
-			{!allBlogs && (
+			{!localBlogs && (
 				<center>
 					<div className="links">
 						<Link to={"/create"} style={{ color: "white", backgroundColor: "#f1356d", borderRadius: "8px", padding: "10px", textDecoration: "none" }}>
@@ -19,7 +28,8 @@ const Home = () => {
 					</div>
 				</center>
 			)}
-			{allBlogs && <BlogList blogsProps={allBlogs} title="All Blogs" />}
+
+			{<BlogList blogsProps={localBlogs} title="All Blogs" />}
 		</div>
 	)
 }

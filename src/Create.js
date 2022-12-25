@@ -4,28 +4,10 @@ import { useHistory } from "react-router-dom"
 const Create = () => {
 	const [title, setTitle] = useState("")
 	const [body, setBody] = useState("")
-	const [author, setAuthor] = useState("Theo")
+	const [author, setAuthor] = useState("Theophilus")
 	const [isAdding, setIsAdding] = useState(false)
 	const history = useHistory()
 
-	// const handleSubmit = (e) => {
-	// 	e.preventDefault()
-	// 	const blog = { title, body, author }
-
-	// 	setIsAdding(true)
-
-	// 	fetch("http://localhost:8000/blogs", {
-	// 		method: "POST",
-	// 		headers: { "Content-Type": "application/json" },
-	// 		body: JSON.stringify(blog)
-	// 	}).then(() => {
-	// 		console.log("New blog added")
-	// 		setIsAdding(false)
-	// 		setTitle("")
-	// 		setBody("")
-	// 		history.push("/")
-	// 	})
-	// }
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
