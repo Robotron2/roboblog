@@ -19,8 +19,8 @@ const BlogList = (props) => {
 		<div className="blog-list">
 			{check.length === 0 && (
 				<center>
-					<div className="links">
-						<Link to={"/create"} style={{ color: "white", backgroundColor: "#f1356d", borderRadius: "8px", padding: "10px", textDecoration: "none" }}>
+					<div className="links newBlog">
+						<Link to={"/create"} style={{ color: "white", backgroundColor: "#f1356d", borderRadius: "8px", padding: "10px", textDecoration: "none", fontSize: "0.7rem" }}>
 							Oops there are no blogs. Click to add some
 						</Link>
 					</div>
