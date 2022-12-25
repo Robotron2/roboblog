@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { useHistory, useParams } from "react-router-dom"
 
 const BlogDetails = () => {
@@ -24,10 +26,12 @@ const BlogDetails = () => {
 	}
 
 	const filteredArray = dbBlog.filter((blog) => {
-		return blog.id === urlId.id
+		// console.log(blog.id == urlId.id)
+		return blog.id == urlId.id
 	})
-
 	// console.log(filteredArray)
+
+	console.log(filteredArray)
 
 	return (
 		<div>
