@@ -6,19 +6,17 @@ const BlogDetails = () => {
 	const urlId = useParams()
 
 	const filterBlogs = dbBlog.filter((blog) => {
-		// console.log(blog)
 		return blog
 	})
 
-	const handleDelete = (id) => {
-		// console.log(id)
+	const handleDelete = () => {
 		const remainingBlogs = filterBlogs.filter((blogObj) => {
-			// console.log(blogObj.id === Number(urlId.id))
-			return blogObj.id === Number(urlId.id)
+			return blogObj.id !== Number(urlId.id)
 			// console.log(typeof urlId.id + "Type of UrlId")
 			// console.log(typeof blogObj.id)
 		})
 		localStorage.setItem("AllBlogs", JSON.stringify(remainingBlogs))
+		console.log(remainingBlogs)
 
 		// console.log(remainingBlogs)
 		history.push("/")
@@ -45,13 +43,7 @@ const BlogDetails = () => {
 							<p>{blog.body}</p>
 						</div>
 						<center>
-							<button
-								onClick={() => {
-									handleDelete(urlId.id)
-								}}
-							>
-								Delete Blog
-							</button>
+							<button onClick={handleDelete}>Delete Blog</button>
 						</center>
 					</div>
 				)

@@ -4,6 +4,9 @@ const BlogList = (props) => {
 	const blogs = props.blogsProps // [ {}, {}, ...]
 	const title = props.title
 	// console.log(blogs)
+	// console.log(typeof [] + "Empty array")
+	// console.log(typeof blogs + "Blog")
+	// console.log(blogs == [])
 
 	return (
 		<div className="blog-list">
