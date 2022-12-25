@@ -8,11 +8,18 @@ const BlogList = (props) => {
 	// console.log(typeof blogs + "Blog")
 	// console.log(blogs == [])
 
+	const check = JSON.parse(localStorage.getItem("AllBlogs"))
+	// if (check === []) {
+	// 	console.log("Empty array")
+	// }
+	// console.log(typeof check)
+	console.log(check.length)
+
 	return (
 		<div className="blog-list">
-			{blogs !== [] && <h1>{title}</h1>}
+			{check.length !== 0 && <h1>{title}</h1>}
 
-			{blogs !== [] &&
+			{check.length !== 0 &&
 				blogs.map((blog, index) => {
 					return (
 						<div className="blog-preview" key={index + 1}>
