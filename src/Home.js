@@ -1,25 +1,27 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import BlogList from "./BlogList"
 
 const Home = () => {
-	const [localBlogs, setLocalBlogs] = useState()
+	const [localBlogs, setLocalBlogs] = useState([])
+	let params = useParams()
 
-	const getBlogs = () => {
+	// const getBlogs = () => {
+	// 	const dbBlog = JSON.parse(localStorage.getItem("AllBlogs"))
+	// 	setLocalBlogs(dbBlog)
+	// }
+
+	// getBlogs()
+
+	useEffect(() => {
 		const dbBlog = JSON.parse(localStorage.getItem("AllBlogs"))
-		if (!dbBlog === []) {
-			setLocalBlogs(dbBlog)
-			console.log(localBlogs)
-		} else {
-			setLocalBlogs([])
-		}
-	}
-
-	useEffect(getBlogs, [])
+		setLocalBlogs(dbBlog)
+		console.log(params)
+	}, [])
 
 	return (
 		<div className="home">
-			{!localBlogs && (
+			{localBlogs === [] && (
 				<center>
 					<div className="links">
 						<Link to={"/create"} style={{ color: "white", backgroundColor: "#f1356d", borderRadius: "8px", padding: "10px", textDecoration: "none" }}>
@@ -29,7 +31,7 @@ const Home = () => {
 				</center>
 			)}
 
-			{<BlogList blogsProps={localBlogs} title="All Blogs" />}
+			{localBlogs !== [] && <BlogList blogsProps={localBlogs} title="All Blogs" />}
 		</div>
 	)
 }
