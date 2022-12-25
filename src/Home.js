@@ -12,6 +12,9 @@ const Home = () => {
 
 	// getBlogs()
 
+	const found = localStorage.getItem("AllBlogs")
+	// console.log(found)
+
 	useEffect(() => {
 		const dbBlog = JSON.parse(localStorage.getItem("AllBlogs"))
 		setLocalBlogs(dbBlog)
@@ -19,7 +22,7 @@ const Home = () => {
 
 	return (
 		<div className="home">
-			{localBlogs === [] && (
+			{localBlogs === [] && found === null && (
 				<center>
 					<div className="links newBlog">
 						<Link to={"/create"} style={{ color: "white", backgroundColor: "#f1356d", borderRadius: "8px", padding: "10px", textDecoration: "none", fontSize: "0.7rem" }}>

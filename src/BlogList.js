@@ -3,21 +3,14 @@ import { Link } from "react-router-dom"
 const BlogList = (props) => {
 	const blogs = props.blogsProps // [ {}, {}, ...]
 	const title = props.title
-	// console.log(blogs)
-	// console.log(typeof [] + "Empty array")
-	// console.log(typeof blogs + "Blog")
-	// console.log(blogs == [])
-
 	const check = JSON.parse(localStorage.getItem("AllBlogs"))
-	// if (check === []) {
-	// 	console.log("Empty array")
-	// }
-	// console.log(typeof check)
-	// console.log(check.length)
+
+	const found = localStorage.getItem("AllBlogs")
+	// console.log(found)
 
 	return (
 		<div className="blog-list">
-			{check.length === 0 && (
+			{found === null && (
 				<center>
 					<div className="links newBlog">
 						<Link to={"/create"} style={{ color: "white", backgroundColor: "#f1356d", borderRadius: "8px", padding: "10px", textDecoration: "none", fontSize: "0.7rem" }}>
@@ -26,9 +19,20 @@ const BlogList = (props) => {
 					</div>
 				</center>
 			)}
-			{check.length !== 0 && <h1>{title}</h1>}
 
-			{check.length !== 0 &&
+			{found !== null && check.length === 0 && (
+				<center>
+					<div className="links newBlog">
+						<Link to={"/create"} style={{ color: "white", backgroundColor: "#f1356d", borderRadius: "8px", padding: "10px", textDecoration: "none", fontSize: "0.7rem" }}>
+							Oops there are no blogs. Click to add some
+						</Link>
+					</div>
+				</center>
+			)}
+			{found !== null && check.length !== 0 && <h1>{title}</h1>}
+
+			{found !== null &&
+				check.length !== 0 &&
 				blogs.map((blog, index) => {
 					return (
 						<div className="blog-preview" key={index + 1}>
