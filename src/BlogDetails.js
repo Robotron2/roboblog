@@ -16,7 +16,7 @@ const BlogDetails = () => {
 			// console.log(typeof blogObj.id)
 		})
 		localStorage.setItem("AllBlogs", JSON.stringify(remainingBlogs))
-		console.log(remainingBlogs)
+		// console.log(remainingBlogs)
 
 		// console.log(remainingBlogs)
 		history.push("/")

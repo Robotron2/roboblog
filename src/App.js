@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import Create from "./Create"
 import BlogDetails from "./BlogDetails"
 import NotFound from "./NotFound"
+import DateGen from "./Date"
 
 function App() {
 	return (
@@ -26,6 +27,7 @@ function App() {
 						</Route>
 					</Switch>
 				</div>
+				<DateGen />
 			</div>
 		</Router>
 	)
