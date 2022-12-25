@@ -18,9 +18,10 @@ const BlogDetails = () => {
 			// console.log(typeof urlId.id + "Type of UrlId")
 			// console.log(typeof blogObj.id)
 		})
+		localStorage.setItem("AllBlogs", JSON.stringify(remainingBlogs))
 
-		console.log(remainingBlogs)
-		// history.push("/")
+		// console.log(remainingBlogs)
+		history.push("/")
 		// console.log(renewedBlogs);
 	}
 
