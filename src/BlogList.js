@@ -13,10 +13,19 @@ const BlogList = (props) => {
 	// 	console.log("Empty array")
 	// }
 	// console.log(typeof check)
-	console.log(check.length)
+	// console.log(check.length)
 
 	return (
 		<div className="blog-list">
+			{check.length === 0 && (
+				<center>
+					<div className="links">
+						<Link to={"/create"} style={{ color: "white", backgroundColor: "#f1356d", borderRadius: "8px", padding: "10px", textDecoration: "none" }}>
+							Oops there are no blogs. Click to add some
+						</Link>
+					</div>
+				</center>
+			)}
 			{check.length !== 0 && <h1>{title}</h1>}
 
 			{check.length !== 0 &&
