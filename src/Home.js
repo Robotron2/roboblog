@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react"
-import { Link, useParams } from "react-router-dom"
+import { Link } from "react-router-dom"
 import BlogList from "./BlogList"
 
 const Home = () => {
 	const [localBlogs, setLocalBlogs] = useState([])
-	let params = useParams()
 
 	// const getBlogs = () => {
 	// 	const dbBlog = JSON.parse(localStorage.getItem("AllBlogs"))
@@ -16,7 +15,6 @@ const Home = () => {
 	useEffect(() => {
 		const dbBlog = JSON.parse(localStorage.getItem("AllBlogs"))
 		setLocalBlogs(dbBlog)
-		console.log(params)
 	}, [])
 
 	return (

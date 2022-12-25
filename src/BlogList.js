@@ -3,13 +3,13 @@ import { Link } from "react-router-dom"
 const BlogList = (props) => {
 	const blogs = props.blogsProps // [ {}, {}, ...]
 	const title = props.title
-	console.log(blogs)
+	// console.log(blogs)
 
 	return (
 		<div className="blog-list">
 			{blogs !== [] && <h1>{title}</h1>}
 
-			{!blogs !== [] &&
+			{blogs !== [] &&
 				blogs.map((blog, index) => {
 					return (
 						<div className="blog-preview" key={index + 1}>

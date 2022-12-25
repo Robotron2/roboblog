@@ -3,22 +3,24 @@ import { useHistory, useParams } from "react-router-dom"
 const BlogDetails = () => {
 	const history = useHistory()
 	const dbBlog = JSON.parse(localStorage.getItem("AllBlogs")) // [{}, {}, ...]
-
 	const urlId = useParams()
 
-	// const filterer = (blogItem) => {
-	// 	return blogItem.id === urlId
-	// }
-	// const delfilterer = (blogItem) => {
-	// 	return blogItem.id !== urlId
-	// }
+	const filterBlogs = dbBlog.filter((blog) => {
+		// console.log(blog)
+		return blog
+	})
 
 	const handleDelete = (id) => {
 		console.log(id)
-		// let renewedBlogs = dbBlog.filter(delfilterer)
-		// localStorage.setItem("AllBlogs", JSON.stringify(renewedBlogs))
+		const remainingBlogs = filterBlogs.filter((blogObj) => {
+			// console.log(blogObj.id === Number(urlId.id))
+			return blogObj.id === Number(urlId.id)
+			// console.log(typeof urlId.id + "Type of UrlId")
+			// console.log(typeof blogObj.id)
+		})
 
-		history.push("/")
+		console.log(remainingBlogs)
+		// history.push("/")
 		// console.log(renewedBlogs);
 	}
 
@@ -26,7 +28,7 @@ const BlogDetails = () => {
 		return blog.id == urlId.id
 	})
 
-	console.log(filteredArray)
+	// console.log(filteredArray)
 
 	return (
 		<div>
@@ -41,6 +43,15 @@ const BlogDetails = () => {
 						<div className="content">
 							<p>{blog.body}</p>
 						</div>
+						<center>
+							<button
+								onClick={() => {
+									handleDelete(urlId.id)
+								}}
+							>
+								Delete Blog
+							</button>
+						</center>
 					</div>
 				)
 			})}
