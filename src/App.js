@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import Create from "./Create"
 import BlogDetails from "./BlogDetails"
 import NotFound from "./NotFound"
-import DateGen from "./Date"
+import DateGen from "./DateComponent"
 
 function App() {
 	return (

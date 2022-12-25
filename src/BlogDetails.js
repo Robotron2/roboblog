@@ -24,7 +24,7 @@ const BlogDetails = () => {
 	}
 
 	const filteredArray = dbBlog.filter((blog) => {
-		return blog.id == urlId.id
+		return blog.id === urlId.id
 	})
 
 	// console.log(filteredArray)
