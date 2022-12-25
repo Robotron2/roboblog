@@ -11,7 +11,7 @@ const BlogDetails = () => {
 	})
 
 	const handleDelete = (id) => {
-		console.log(id)
+		// console.log(id)
 		const remainingBlogs = filterBlogs.filter((blogObj) => {
 			// console.log(blogObj.id === Number(urlId.id))
 			return blogObj.id === Number(urlId.id)
